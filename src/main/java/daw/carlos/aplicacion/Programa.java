@@ -56,15 +56,6 @@ public class Programa {
             nuevaLista = daoPersona.getAll();
             System.out.println("-------- Lista con datos recogidos desde la B.D despues de modificar una persona -------------");
             nuevaLista.forEach(System.out::println);
-            System.out.println("-----------------------------------------");
-            System.out.println("Ejecución del procedimiento almacenado");
-            System.out.println("Se cambia María Weston por Felipe Román");
-            System.out.println("Nombres cambiados " + daoPersona.cambiarNombres("Felipe Román", "Maria Weston"));
-            System.out.println("-----------------------------------------");
-            nuevaLista = daoPersona.getAll();
-            System.out.println("-------- Lista con datos recogidos desde la B.D despues de ejecutar proced. -------------");
-            nuevaLista.forEach(System.out::println);
-            System.out.println("-----------------------------------------");
         } catch (SQLException sqle) {
             System.out.println("No se ha podido realizar la operación:");
             System.out.println(sqle.getMessage());
