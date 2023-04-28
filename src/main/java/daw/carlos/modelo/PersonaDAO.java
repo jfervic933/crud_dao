@@ -3,7 +3,6 @@
  */
 package daw.carlos.modelo;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -177,26 +176,5 @@ public class PersonaDAO implements IPersona {
             return numFilas;
         }
     }
-
-    public int cambiarNombres(String newName, String oldName) throws SQLException {
-
-        int res = 0;
-        // Dos ?, uno para newName y otro para oldName
-
-        String sql = "{call cambiar_nombres (?,?)}";
-
-        // Preparamos la llamada al procedimiento almacenado
-        try (CallableStatement call = con.prepareCall(sql)) {
-            // Establecemos parámetros a pasar al procedimiento
-            call.setString(1, newName);
-            call.setString(2, oldName);
-            // Ejecutamos el procedimiento
-            res = call.executeUpdate();
-            
-        }
-        return res;
-    }
-
-
 }
 
