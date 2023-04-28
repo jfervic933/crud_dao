@@ -34,10 +34,6 @@ CREATE TABLE `persona` (
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`carlos`@`%` PROCEDURE `cambiar_nombres`(in newname varchar(45), in oldname varchar(45))
-BEGIN
-update persona set nombre=newname where nombre=oldname;
 END ;;
 DELIMITER ;
 
