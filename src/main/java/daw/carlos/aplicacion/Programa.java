@@ -60,7 +60,7 @@ public class Programa {
             System.out.println("No se ha podido realizar la operación:");
             System.out.println(sqle.getMessage());
         }
-        System.out.println("-------- Lista original --------------------);
+        System.out.println("-------- Lista original --------------------");
         listaPersonas.forEach(System.out::println);
 
     }
