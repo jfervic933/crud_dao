@@ -49,6 +49,21 @@ public class PersonaDAO implements IPersona {
         return lista;
     }
 
+    public int getLastInsertedId() throws SQLException {
+        int lastId = -1; // Valor predeterminado si no se encuentra el ID.
+
+        String query = "SELECT MAX(pk) AS pk FROM persona";
+
+        PreparedStatement statement = con.prepareStatement(query);
+        ResultSet resultSet = statement.executeQuery();
+
+        if (resultSet.next()) {
+            lastId = resultSet.getInt("pk");
+        }
+
+        return lastId;
+    }
+
     @Override
     public PersonaDTO findByPk(int pk) throws SQLException {
 
@@ -177,4 +192,3 @@ public class PersonaDAO implements IPersona {
         }
     }
 }
-

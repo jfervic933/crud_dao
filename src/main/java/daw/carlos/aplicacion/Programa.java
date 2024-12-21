@@ -6,7 +6,7 @@
 package daw.carlos.aplicacion;
 
 import daw.carlos.modelo.PersonaDAO;
-import daw.carlos.modelo.PersonaVO;
+import daw.carlos.modelo.PersonaDTO;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,19 +22,19 @@ public class Programa {
         
         
         PersonaDAO daoPersona = new PersonaDAO();
-        List<PersonaVO> listaPersonas = new ArrayList<>();
-        listaPersonas.add(new PersonaVO(1,"Hugo Weston", LocalDate.of(1997, 6, 6)));
-        listaPersonas.add(new PersonaVO(2,"Maria Weston", LocalDate.of(1967, 6, 6)));
-        listaPersonas.add(new PersonaVO(3,"Pablo Pérez", LocalDate.of(1997, 12, 5)));
-        listaPersonas.add(new PersonaVO(4,"Maria Weston", LocalDate.of(2000, 6, 5)));
-        listaPersonas.add(new PersonaVO(5,"Pedro Moreno", LocalDate.of(2001, 6, 15)));
+        List<PersonaDTO> listaPersonas = new ArrayList<>();
+        listaPersonas.add(new PersonaDTO(1,"Hugo Weston", LocalDate.of(1997, 6, 6)));
+        listaPersonas.add(new PersonaDTO(2,"Maria Weston", LocalDate.of(1967, 6, 6)));
+        listaPersonas.add(new PersonaDTO(3,"Pablo Pérez", LocalDate.of(1997, 12, 5)));
+        listaPersonas.add(new PersonaDTO(4,"Maria Weston", LocalDate.of(2000, 6, 5)));
+        listaPersonas.add(new PersonaDTO(5,"Pedro Moreno", LocalDate.of(2001, 6, 15)));
         
         try {
             
             System.out.println("Nº personas insertadas " + daoPersona.insertPersona(listaPersonas));
             System.out.println("-----------------------------------------");
             System.out.println("Comprobamos en una nueva lista que se recogen los datos desde la tabla.");
-            List<PersonaVO> nuevaLista = daoPersona.getAll();
+            List<PersonaDTO> nuevaLista = daoPersona.getAll();
             System.out.println("-------- Lista con datos recogidos desde la B.D -------------");
             nuevaLista.forEach(System.out::println);
             System.out.println("-----------------------------------------");
@@ -43,7 +43,7 @@ public class Programa {
             System.out.println("-----------------------------------------");
             System.out.println("Se va a borrar la persona con pk 3");
             System.out.println("Nº personas borradas " + 
-                    daoPersona.deletePersona(new PersonaVO(3,"Pablo Pérez", LocalDate.of(1997, 12, 5))));
+                    daoPersona.deletePersona(new PersonaDTO(3,"Pablo Pérez", LocalDate.of(1997, 12, 5))));
             System.out.println("-----------------------------------------");
             nuevaLista = daoPersona.getAll();
             System.out.println("-------- Lista con datos recogidos desde la B.D despues de borrar una persona -------------");
@@ -51,11 +51,12 @@ public class Programa {
             System.out.println("-----------------------------------------");
             System.out.println("Modificación de la persona con pk 5");
             System.out.println("Nº Personas modificadas " + 
-                    daoPersona.updatePersona(5, new PersonaVO(7,"NuevoNombre", LocalDate.of(2019, 6, 5))));
+                    daoPersona.updatePersona(5, new PersonaDTO(7,"NuevoNombre", LocalDate.of(2019, 6, 5))));
             System.out.println("-----------------------------------------");
             nuevaLista = daoPersona.getAll();
             System.out.println("-------- Lista con datos recogidos desde la B.D despues de modificar una persona -------------");
             nuevaLista.forEach(System.out::println);
+            System.out.println("Ultima id: "  + daoPersona.getLastInsertedId());
         } catch (SQLException sqle) {
             System.out.println("No se ha podido realizar la operación:");
             System.out.println(sqle.getMessage());
