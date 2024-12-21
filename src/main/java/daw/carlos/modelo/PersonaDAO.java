@@ -25,8 +25,8 @@ public class PersonaDAO implements IPersona {
     }
 
     @Override
-    public List<PersonaVO> getAll() throws SQLException {
-        List<PersonaVO> lista = new ArrayList<>();
+    public List<PersonaDTO> getAll() throws SQLException {
+        List<PersonaDTO> lista = new ArrayList<>();
 
         // Preparamos la consulta de datos mediante un objeto Statement
         // ya que no necesitamos parametrizar la sentencia SQL
@@ -35,7 +35,7 @@ public class PersonaDAO implements IPersona {
             ResultSet res = st.executeQuery("select * from persona");
             // Ahora construimos la lista, recorriendo el ResultSet y mapeando los datos
             while (res.next()) {
-                PersonaVO p = new PersonaVO();
+                PersonaDTO p = new PersonaDTO();
                 // Recogemos los datos de la persona, guardamos en un objeto
                 p.setPk(res.getInt("pk"));
                 p.setNombre(res.getString("nombre"));
@@ -50,10 +50,10 @@ public class PersonaDAO implements IPersona {
     }
 
     @Override
-    public PersonaVO findByPk(int pk) throws SQLException {
+    public PersonaDTO findByPk(int pk) throws SQLException {
 
         ResultSet res = null;
-        PersonaVO persona = new PersonaVO();
+        PersonaDTO persona = new PersonaDTO();
 
         String sql = "select * from persona where pk=?";
 
@@ -79,7 +79,7 @@ public class PersonaDAO implements IPersona {
     }
 
     @Override
-    public int insertPersona(PersonaVO persona) throws SQLException {
+    public int insertPersona(PersonaDTO persona) throws SQLException {
 
         int numFilas = 0;
         String sql = "insert into persona values (?,?,?)";
@@ -106,10 +106,10 @@ public class PersonaDAO implements IPersona {
     }
 
     @Override
-    public int insertPersona(List<PersonaVO> lista) throws SQLException {
+    public int insertPersona(List<PersonaDTO> lista) throws SQLException {
         int numFilas = 0;
 
-        for (PersonaVO tmp : lista) {
+        for (PersonaDTO tmp : lista) {
             numFilas += insertPersona(tmp);
         }
 
@@ -136,7 +136,7 @@ public class PersonaDAO implements IPersona {
     }
 
     @Override
-    public int deletePersona(PersonaVO persona) throws SQLException {
+    public int deletePersona(PersonaDTO persona) throws SQLException {
         int numFilas = 0;
 
         String sql = "delete from persona where pk = ?";
@@ -153,7 +153,7 @@ public class PersonaDAO implements IPersona {
     }
 
     @Override
-    public int updatePersona(int pk, PersonaVO nuevosDatos) throws SQLException {
+    public int updatePersona(int pk, PersonaDTO nuevosDatos) throws SQLException {
 
         int numFilas = 0;
         String sql = "update persona set nombre = ?, fecha_nac = ? where pk=?";

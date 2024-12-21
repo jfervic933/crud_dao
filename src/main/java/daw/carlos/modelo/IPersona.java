@@ -15,25 +15,25 @@ import java.util.List;
 public interface IPersona {
     
     // Método para obtener todos los registros de la tabla
-    List<PersonaVO> getAll() throws SQLException;
+    List<PersonaDTO> getAll() throws SQLException;
     
     // Méodo para obtener un registro a partir de la PK
-    PersonaVO findByPk(int pk) throws SQLException;
+    PersonaDTO findByPk(int pk) throws SQLException;
     
     // Método para insertar un registro
-    int insertPersona (PersonaVO persona) throws SQLException;
+    int insertPersona (PersonaDTO persona) throws SQLException;
     
     // Método para insertar varios registros
-    int insertPersona (List<PersonaVO> lista) throws SQLException;
+    int insertPersona (List<PersonaDTO> lista) throws SQLException;
     
     // Método para borrar una persona
-    int deletePersona (PersonaVO p) throws SQLException;
+    int deletePersona (PersonaDTO p) throws SQLException;
     
     // Método para borrar toda la tabla
     int deletePersona() throws SQLException;
     
     // Método para modificar una persona. Se modifica a la persona que tenga esa 'pk'
     // con los nuevos datos que traiga la persona 'nuevosDatos'
-    int updatePersona (int pk, PersonaVO nuevosDatos) throws SQLException;
+    int updatePersona (int pk, PersonaDTO nuevosDatos) throws SQLException;
     
 }

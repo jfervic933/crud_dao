@@ -11,18 +11,18 @@ import java.time.LocalDate;
  * @author J. Carlos F. Vico <jcarlosvico@maralboran.es>
  */
 
-public class PersonaVO {
+public class PersonaDTO {
     private int pk;
     private String nombre;
     private LocalDate fechaNacimiento; 
 
-    public PersonaVO(int pk, String nombre, LocalDate fechaNacimiento) {
+    public PersonaDTO(int pk, String nombre, LocalDate fechaNacimiento) {
         this.pk = pk;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public PersonaVO(){
+    public PersonaDTO(){
         
     }
     
