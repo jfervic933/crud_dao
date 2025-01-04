@@ -49,6 +49,8 @@ public class PersonaDAO implements IPersona {
         return lista;
     }
 
+    // Este método permite obtener la última id de la tabla
+    // Así se pueden insertar nuevos registros sin duplicar claves
     public int getLastInsertedId() throws SQLException {
         int lastId = 0; // Valor predeterminado si no hay registros
 
