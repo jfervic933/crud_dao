@@ -50,7 +50,7 @@ public class PersonaDAO implements IPersona {
     }
 
     public int getLastInsertedId() throws SQLException {
-        int lastId = -1; // Valor predeterminado si no se encuentra el ID.
+        int lastId = 0; // Valor predeterminado si no hay registros
 
         String query = "SELECT MAX(pk) AS pk FROM persona";
 
